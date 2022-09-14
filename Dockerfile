@@ -33,14 +33,11 @@ RUN apt-get update && \
 ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
 
 # Install Android
-ENV ANDROID_COMPILE_SDK =31
-ENV ANDROID_BUILD_TOOLS =31.0.0
-ENV ANDROID_COMMAND_LINE_TOOLS =7583922
-ENV GRADLE_OPTS = -Dorg.gradle.daemon=false
+ENV ANDROID_COMPILE_SDK=31
+ENV ANDROID_BUILD_TOOLS=31.0.0
+ENV ANDROID_COMMAND_LINE_TOOLS=7583922
 
-RUN export GRADLE_USER_HOME=$(pwd)/.gradle && \
-  chmod +x ./gradlew && \
-  apt-get --quiet update --yes && \
+RUN apt-get --quiet update --yes && \
   apt-get --quiet install --yes wget tar unzip lib32stdc++6 lib32z1 && \
   mkdir -p android-sdk-linux/cmdline-tools && \
   export ANDROID_SDK_ROOT=$PWD/android-sdk-linux && \
